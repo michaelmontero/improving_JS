@@ -27,3 +27,12 @@
     function saveAll(){
         localStorage.setItem("data", JSON.stringify(data));
     }
+
+    //Retrive the data saved in localStorage every time the page is reload.
+    function getData(){
+        var info = localStorage.getItem("data");
+        if(info != null){
+            //If the info is not null reset the data object
+            data = JSON.parse(info);
+        }
+    }
