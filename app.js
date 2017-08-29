@@ -55,8 +55,8 @@
             }
             tdAction = dce("td");
 
-            delButton = createButton("Delete", "btn btn-danger", "deleteVicle("+x+")"); //Create delete button
-            editButton = createButton("Edit", "btn btn-warning","editVicle("+x+")"); //Create edit button
+            delButton = createButton("Delete", "btn btn-danger", "deleteVehicle("+x+")"); //Create delete button
+            editButton = createButton("Edit", "btn btn-warning","editVehicle("+x+")"); //Create edit button
 
             tdAction.appendChild(delButton);
             tdAction.appendChild(editButton);
@@ -80,10 +80,15 @@
         return document.createElement(e);
     }
 
-    function deleteVicle(index){
-
+    function deleteVehicle(index){
+        var deleteMsj = "Are you sure you want to delete the vehicle?";
+        if(confirm(deleteMsj)){
+            delete data.vehicle[index];
+            saveAll();
+            showVehicles();
+        }
     }
 
-    function editVicle(index){
+    function editVehicle(index){
         
     }
