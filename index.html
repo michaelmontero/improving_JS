@@ -6,6 +6,7 @@
         <!--Add  references-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="style.css"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
     </head>
@@ -13,21 +14,21 @@
         <div class="container">
             <div class="row">
                     <div class="col col-sm-6">
-                        <form action="">
+                        <form id="formData">
 
                             <div class="input-group form-group">
                                 <span class="input-group-addon">Car id</span>
-                                <input name="cardId" class="form-control"/>
+                                <input name="carId" id="carId" class="form-control"/>
                             </div>
 
                             <div class="input-group form-group">
                                     <span class="input-group-addon">Brand</span>
-                                    <select name="brand" class="form-control"></select>
+                                    <select name="brand" id="brand" class="form-control"></select>
                             </div>
 
                             <div class="input-group form-group">
                                     <span class="input-group-addon">Model</span>
-                                    <select name="model" class="form-control"></select>
+                                    <select name="model"  id="model" class="form-control"></select>
                             </div>
 
                             <div class="input-group form-group">
@@ -42,11 +43,11 @@
 
                             <div class="input-group form-group">
                                     <span class="input-group-addon">Commentary</span>
-                                    <textarea name="model" class="form-control"></textarea>
+                                    <textarea name="commentary"  id="commentary" class="form-control"></textarea>
                             </div>
                             <div>
-                                 <button class="btn btn-success">Add new</button>
-                                <button class="btn btn-primary">Save</button>
+                                    <input type="button" class="btn btn-success" value="Add new"/>
+                                    <input type="button" class="btn btn-primary" value="Save" onclick="saveVehiche()"/>
                             </div>
                         </form>
                     </div>
@@ -67,4 +68,5 @@
             </div>
         </div>
     </body>
+    <script src="app.js"></script>
 </html>
