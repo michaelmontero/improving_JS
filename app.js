@@ -21,6 +21,7 @@
 
         //insert the method in the local storage
         saveAll();
+        showVehicles();
     }
 
     //Insert the data object in localStorage
@@ -35,4 +36,27 @@
             //If the info is not null reset the data object
             data = JSON.parse(info);
         }
+        showVehicles();
+    }
+
+
+    function showVehicles(){
+        var dataLocation = document.getElementById("tBody");
+        dataLocation.innerHTML = "";
+        for(x =0 ; x < data.vehicle.length; x++){
+            vehicle  = data.vehicle[x];
+            var tr = dce("tr");
+
+            for(key in vehicle){
+                property = vehicle[key];
+                td = dce("td")
+                td.innerHTML = property;
+                tr.appendChild(td)
+            }
+            dataLocation.appendChild(tr)
+        }
+    }
+
+    function dce(e){
+        return document.createElement(e);
     }
