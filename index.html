@@ -1,5 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
-    <body></body>
+    <head>
+        <title>Card manager</title>
+        
+        <!--Add  references-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="style.css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                    <div class="col col-sm-6">
+                        <form action="">
+
+                            <div class="input-group form-group">
+                                <span class="input-group-addon">Car id</span>
+                                <input name="cardId" class="form-control"/>
+                            </div>
+
+                            <div class="input-group form-group">
+                                    <span class="input-group-addon">Brand</span>
+                                    <select name="brand" class="form-control"></select>
+                            </div>
+
+                            <div class="input-group form-group">
+                                    <span class="input-group-addon">Model</span>
+                                    <select name="model" class="form-control"></select>
+                            </div>
+
+                            <div class="input-group form-group">
+                                    <span class="input-group-addon">Transmission</span>
+                                    <span class="input-group-addon">
+                                            <label><input type="radio" name="transmission" value="Automatic"> Automatic</label>
+                                    </span>
+                                    <span class="input-group-addon">
+                                           <label><input type="radio" name="transmission" value="Mecanic"> Mecanic</label>
+                                    </span>
+                            </div>
+
+                            <div class="input-group form-group">
+                                    <span class="input-group-addon">Commentary</span>
+                                    <textarea name="model" class="form-control"></textarea>
+                            </div>
+                            <div>
+                                 <button class="btn btn-success">Add new</button>
+                                <button class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col col-sm-6">Dos</div>
+            </div>
+        </div>
+    </body>
 </html>
