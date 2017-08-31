@@ -1,4 +1,5 @@
-    
+    $("#divBrand").hide()
+
     var data = {
         vehicle : [],
         brand : [],
@@ -36,9 +37,21 @@
             //If the info is not null reset the data object
             data = JSON.parse(info);
         }
+
+        fillBrandSelect();
         showVehicles();
     }
 
+    function fillBrandSelect(){
+        var brandSelect = document.getElementById("brand");
+        for(x =0 ; x<data.brand.length;x++){
+            var option = dce("option");
+            option.value = data.brand[x];
+            option.innerHTML = data.brand[x]
+            brandSelect.appendChild(option)
+        }
+        brandSelect.selectedIndex = -1;
+    }
     //Fills the table that contains the information dynamically
     function showVehicles(){
         var dataLocation = document.getElementById("tBody");
@@ -91,4 +104,46 @@
 
     function editVehicle(index){
         
+    }
+
+    function addBrand(){
+        $("#divMain").hide("slow");
+        $("#divBrand").show("slow");
+    }
+
+    function backButton(){
+        $("#divMain").show("slow");
+        $("#divBrand").hide("slow");
+    }
+
+    function appendBrand(){
+        var destination = document.getElementById("divBrandList");
+        div = dce("div");
+        div.setAttribute("class", "input-group form-group");
+
+        span = dce("span");
+        span.setAttribute("class", "input-group-addon");
+        span.innerHTML = "+";
+
+        input = dce("input");
+        input.setAttribute("class", "form-control");
+        input.setAttribute("name", "inputBrand"); //Add the same name to every input for iterate all inputs later.
+        input.setAttribute("type", "text");
+
+        div.appendChild(span)
+        div.appendChild(input)
+
+        destination.appendChild(div)
+    }
+
+
+    function saveBrand(){
+        brands = document.getElementsByName("inputBrand");
+
+        data.brand = []; //Reset the original object
+        for(x = 0; x < brands.length; x++){
+            console.log(x);
+            data.brand.push(brands[x].value)
+        }
+        saveAll();
     }
