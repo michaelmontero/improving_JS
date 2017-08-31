@@ -44,6 +44,7 @@
 
     function fillBrandSelect(){
         var brandSelect = document.getElementById("brand");
+        brandSelect.innerHTML = "";
         for(x =0 ; x<data.brand.length;x++){
             var option = dce("option");
             option.value = data.brand[x];
@@ -107,6 +108,13 @@
     }
 
     function addBrand(){
+        var destination = document.getElementById("divBrandList");
+        destination.innerHTML = "";
+
+        for(x =0; x < data.brand.length; x++){
+            appendBrand(data.brand[x]);  //Showing/Creating all input brands previously created and add them his respective value
+        }
+
         $("#divMain").hide("slow");
         $("#divBrand").show("slow");
     }
@@ -116,19 +124,22 @@
         $("#divBrand").hide("slow");
     }
 
-    function appendBrand(){
+    //This function create a brand input and assigns it a value
+    function appendBrand(data){
         var destination = document.getElementById("divBrandList");
         div = dce("div");
         div.setAttribute("class", "input-group form-group");
 
         span = dce("span");
         span.setAttribute("class", "input-group-addon");
-        span.innerHTML = "+";
+        span.innerHTML = "x";
+        span.setAttribute("ondblClick","removeBrand(this)")
 
         input = dce("input");
         input.setAttribute("class", "form-control");
         input.setAttribute("name", "inputBrand"); //Add the same name to every input for iterate all inputs later.
         input.setAttribute("type", "text");
+        input.value = data;
 
         div.appendChild(span)
         div.appendChild(input)
@@ -136,14 +147,18 @@
         destination.appendChild(div)
     }
 
+    function removeBrand(e){
+        e.parentNode.parentNode.removeChild(e.parentNode);
+        saveBrand();
+    }
 
     function saveBrand(){
         brands = document.getElementsByName("inputBrand");
 
         data.brand = []; //Reset the original object
         for(x = 0; x < brands.length; x++){
-            console.log(x);
             data.brand.push(brands[x].value)
         }
         saveAll();
+        getData();
     }
