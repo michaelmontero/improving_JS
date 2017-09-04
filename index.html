@@ -23,6 +23,32 @@
                 <input type="button" value="Back" class="btn btn-defaul" onclick="backButton()" />
                 <input type="button" onclick="appendBrand('')" value="+" class="btn btn-primary"/>
             </div>
+
+            <div id="divModel">
+                <!--ADD/EDIT MODEL SECTION -->
+                <h3>Models</h3>
+               
+                <div id="divModelList">
+                    <table class="datatable table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Brand
+                                </th>
+                                <th>
+                                    Model
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="modelList">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <input type="button" onclick="saveModel()" value="Save" class="btn btn-primary"/>
+                <input type="button" value="Back" class="btn btn-defaul" onclick="backButton()" />
+                <input type="button" onclick="appendModel('')" value="+" class="btn btn-primary"/>
+            </div>
             <div class="row" id="divMain">
                     <div class="col col-sm-6">
                         <form id="formData">
@@ -60,7 +86,8 @@
                                     <input type="button" class="btn btn-primary" value="Save" onclick="saveVehiche()"/>
                             </div>
                             <div class="form-group" id="addButtons">
-                                    <input type="button" value="Add Brand" class="btn btn-defaul" onclick="addBrand()" />
+                                <input type="button" value="Add Brand" class="btn btn-defaul" onclick="showBrandDiv()" />
+                                <input type="button" value="Add Model" class="btn btn-defaul" onclick="showModelDiv()" />
                             </div>
                         </form>
                     </div>

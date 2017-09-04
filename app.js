@@ -1,4 +1,5 @@
-    $("#divBrand").hide()
+    $("#divBrand").hide();
+    $("#divModel").hide();
 
     var data = {
         vehicle : [],
@@ -107,45 +108,32 @@
         
     }
 
-    function addBrand(){
+    function showBrandDiv(){
         var destination = document.getElementById("divBrandList");
         destination.innerHTML = "";
 
         for(x =0; x < data.brand.length; x++){
-            appendBrand(data.brand[x]);  //Showing/Creating all input brands previously created and add them his respective value
+            appendBrand(data.brand[x], destination);  //Showing/Creating all input brands previously created and add them his respective value
         }
 
-        $("#divMain").hide("slow");
+        $("#divMain, #divModel").hide("slow");
         $("#divBrand").show("slow");
+    }
+
+    
+    function showModelDiv(){
+
+        $("#divMain, #divBrand").hide("slow");
+        $("#divModel").show("slow");
     }
 
     function backButton(){
         $("#divMain").show("slow");
-        $("#divBrand").hide("slow");
+        $("#divModel, #divBrand").hide("slow");
     }
 
     //This function create a brand input and assigns it a value
-    function appendBrand(data){
-        var destination = document.getElementById("divBrandList");
-        div = dce("div");
-        div.setAttribute("class", "input-group form-group");
-
-        span = dce("span");
-        span.setAttribute("class", "input-group-addon");
-        span.innerHTML = "x";
-        span.setAttribute("ondblClick","removeBrand(this)")
-
-        input = dce("input");
-        input.setAttribute("class", "form-control");
-        input.setAttribute("name", "inputBrand"); //Add the same name to every input for iterate all inputs later.
-        input.setAttribute("type", "text");
-        input.value = data;
-
-        div.appendChild(span)
-        div.appendChild(input)
-
-        destination.appendChild(div)
-    }
+    
 
     function removeBrand(e){
         e.parentNode.parentNode.removeChild(e.parentNode);
@@ -161,4 +149,36 @@
         }
         saveAll();
         getData();
+    }
+
+
+    function appendModel(text){
+        destination = document.getElementById("modelList");
+        destination.inneHTML = "";
+        
+        tr = dce("tr");
+        td = dce("td");
+        select = dce("select");
+
+        for(i = 0; i < data.brand.length; i++){
+            opt = dce("option");
+            opt.value = data.brand[i];
+            opt.text = data.brand[i];
+            select.appendChild(opt);
+        }
+        select.setAttribute("class", "form-control");
+        select.setAttribute("name", "mod_brand");
+        select.selectedIndex = -1;
+        td.appendChild(select);
+        tr.appendChild(td);
+
+        td = dce("td");
+        txt = dce("input");
+        txt.setAttribute("type","text");
+        txt.setAttribute("name", "mod_name")
+        txt.setAttribute("class", "form-control")
+        txt.setAttribute("placeholder", "Enter the model name sepparates by commas (\",\")")
+        td.appendChild(txt)
+        tr.appendChild(td)
+        destination.appendChild(tr)
     }
