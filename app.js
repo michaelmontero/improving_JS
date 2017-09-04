@@ -1,6 +1,7 @@
     $("#divBrand").hide();
     $("#divModel").hide();
-
+    $("#sucessPanel").hide();
+    $("#errorPanel").hide();
     var data = {
         vehicle : [],
         brand : [],
@@ -16,15 +17,19 @@
         var transmission = $("#transmission").val()
         var commentary = $("#commentary").val();
 
+        if(carId != null || brand !=null || model != null || transmission == null || commentary ==null){
+            $("#errorPanel").show();
+            $("#errorMessage").html("Please fill all fields");
+        }else{
+            //Create a vehicle obj
+            objVehicle = {"carId" : carId,"brand" : brand, "model" : model,"transmission" : transmission,"commentary" : commentary};
+            data.vehicle.push(objVehicle);
 
-        //Create a vehicle obj
-        objVehicle = {"carId" : carId,"brand" : brand, "model" : model,"transmission" : transmission,"commentary" : commentary};
-        data.vehicle.push(objVehicle);
-
-        //insert the method in the local storage
-        saveAll();
-        showVehicles();
-        clearAll();
+            //insert the method in the local storage
+            saveAll();
+            showVehicles();
+            clearAll();
+        }
     }
 
     //Insert the data object in localStorage
@@ -221,6 +226,7 @@
         }
         saveAll();
         getData();
+        $("#sucessPanel").show();
     }
 
     function filterModel(value){
