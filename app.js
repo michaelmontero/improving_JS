@@ -151,6 +151,26 @@
         getData();
     }
 
+    function appendBrand(text){
+            var destination = document.getElementById("divBrandList");
+            div = dce("div");
+            div.setAttribute("class", "input-group form-group");
+        
+            span = dce("span");
+            span.setAttribute("class", "input-group-addon");
+            span.innerHTML = "+";
+            input = dce("input");
+            input.setAttribute("class", "form-control");
+            input.setAttribute("name", "inputBrand"); //Add the same name to every input for iterate all inputs later.
+            input.setAttribute("type", "text");
+            input.setAttribute("value", text);
+     
+            div.appendChild(span)
+            div.appendChild(input)
+        
+            destination.appendChild(div)
+    }
+
 
     function appendModel(text){
         destination = document.getElementById("modelList");
@@ -167,7 +187,7 @@
             select.appendChild(opt);
         }
         select.setAttribute("class", "form-control");
-        select.setAttribute("name", "mod_brand");
+        select.setAttribute("name", "name_brand");
         select.selectedIndex = -1;
         td.appendChild(select);
         tr.appendChild(td);
@@ -175,10 +195,35 @@
         td = dce("td");
         txt = dce("input");
         txt.setAttribute("type","text");
-        txt.setAttribute("name", "mod_name")
+        txt.setAttribute("name", "name_model")
         txt.setAttribute("class", "form-control")
-        txt.setAttribute("placeholder", "Enter the model name sepparates by commas (\",\")")
         td.appendChild(txt)
         tr.appendChild(td)
         destination.appendChild(tr)
+    }
+
+    function saveModel(){
+        brands = document.getElementsByName("name_brand");
+        model = document.getElementsByName("name_model");
+        
+        data.model = []; //Reset the original object
+        for(x = 0; x < model.length; x++){
+            data.model.push([brands[x].value, model[x].value]);
+        }
+        saveAll();
+        getData();
+    }
+
+    function filterModel(value){
+        var selectModel = document.getElementById("model")
+        selectModel.innerHTML = "";
+        for(x =0 ; x < data.model.length; x++){
+            if(data.model[x][0] == value){
+                opt = dce("option")
+                opt.value = data.model[x][1]
+                opt.innerHTML = data.model[x][1]
+                selectModel.appendChild(opt)
+            }
+        }
+        selectModel.selectedIndex = -1;
     }
