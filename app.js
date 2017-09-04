@@ -24,6 +24,7 @@
         //insert the method in the local storage
         saveAll();
         showVehicles();
+        clearAll();
     }
 
     //Insert the data object in localStorage
@@ -123,6 +124,13 @@
     
     function showModelDiv(){
 
+        var destination = document.getElementById("divBrandList");
+        destination.innerHTML = "";
+
+        for(x =0; x < data.model.length; x++){
+            appendModel(data.brand[x], x);  //Showing/Creating all input brands previously created and add them his respective value
+        }
+
         $("#divMain, #divBrand").hide("slow");
         $("#divModel").show("slow");
     }
@@ -172,7 +180,7 @@
     }
 
 
-    function appendModel(text){
+    function appendModel(text, index){
         destination = document.getElementById("modelList");
         destination.inneHTML = "";
         
@@ -188,7 +196,7 @@
         }
         select.setAttribute("class", "form-control");
         select.setAttribute("name", "name_brand");
-        select.selectedIndex = -1;
+        select.selectedIndex = index;
         td.appendChild(select);
         tr.appendChild(td);
 
@@ -196,6 +204,7 @@
         txt = dce("input");
         txt.setAttribute("type","text");
         txt.setAttribute("name", "name_model")
+        txt.setAttribute("value",text)
         txt.setAttribute("class", "form-control")
         td.appendChild(txt)
         tr.appendChild(td)

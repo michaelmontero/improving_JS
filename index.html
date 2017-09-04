@@ -47,14 +47,14 @@
                 </div>
                 <input type="button" onclick="saveModel()" value="Save" class="btn btn-primary"/>
                 <input type="button" value="Back" class="btn btn-defaul" onclick="backButton()" />
-                <input type="button" onclick="appendModel('')" value="+" class="btn btn-primary"/>
+                <input type="button" onclick="appendModel('', -1)" value="+" class="btn btn-primary"/>
             </div>
             <div class="row" id="divMain">
                     <div class="col col-sm-6">
                         <form id="formData">
                             <div class="input-group form-group">
                                 <span class="input-group-addon">Car id</span>
-                                <input name="carId" id="carId" class="form-control"/>
+                                <input name="carId" id="carId" type="text" class="form-control"/>
                             </div>
 
                             <div class="input-group form-group">
@@ -82,7 +82,7 @@
                                     <textarea name="commentary"  id="commentary" class="form-control"></textarea>
                             </div>
                             <div>
-                                    <input type="button" class="btn btn-success" value="Add new"/>
+                                    <input type="button" class="btn btn-success" onclick="clearAll()" value="Add new"/>
                                     <input type="button" class="btn btn-primary" value="Save" onclick="saveVehiche()"/>
                             </div>
                             <div class="form-group" id="addButtons">
