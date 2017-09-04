@@ -13,7 +13,7 @@
         var carId = $("#carId").val();
         var brand = $("#brand").val();
         var model = $("#model").val();
-        var transmission = $("#transmission").val();
+        var transmission = $("#transmission").val()
         var commentary = $("#commentary").val();
 
 
